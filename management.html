@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-5.1.0-dist/css/bootstrap.min.css">
+    <script src="./bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src=""></script>
+</head>
+<body onload="Display()">
+    <h1>Product Management</h1> 
+    
+    <div>
+        <form action="">
+            <div class="row">
+                <div class="col-auto">
+                    <label for="txtproduct" class="form-label">Add New Product</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" id="txtproduct" class="form-control" placeholder="New Product">
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-outline-primary" id="btnCreate" onclick="addProduct()">Add</button>
+                </div>
+            </div>
+    <div>
+      <table class="table" id="tbProduct">
+        <!-- <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">product</th>
+          </tr>
+        </thead> -->
+        <!-- <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td><button type="button" class="btn btn-edit">Edit</button></td>
+            <td><button type="button" class="btn btn-delete">Delete</button></td>
+          </tr>
+        </tbody> -->
+      </table>
+    </div>
+  <script>
+    let product = [
+      "Sony Xperia",
+      "Samsung Galaxy",
+      "Nokia 6",
+      "Xiaomi RedmiNote 4",
+      "Apple iPhone 6S",
+      "Xiaomi Mi 5s Plus",
+      "Apple iPhone 8 Plus",
+      "Fujitsu F-04E",
+      "Oppo A71",
+    ]
+    function Display() {
+      let str = ``;
+      str += `
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col" id="count"></th>
+          </tr>
+        </thead>
+      `
+      for (let i = 0; i < product.length; i++) {
+        str += `
+        <tbody>
+          <tr>
+            <th scope="row">${i + 1}</th>
+            <td id="product${i}">${product[i]}</td>
+            <td><button type="button" id="btnEdit${i}" class="btn btn-edit" onclick="btnEdit(${i})">Edit</button></td>
+            <td><button type="button" id="btnDel${i}" class="btn btn-delete" onclick="btnDelete(${i})">Delete</button></td>
+          </tr>
+        </tbody>
+        `
+      }
+      document.getElementById("tbProduct").innerHTML = str;
+    }
+    let st = product.length + "product";
+    if (product.length > 1) {
+      st += "s";
+    }
+    document.getElementById("count").innerHTML = st
+
+    function addProduct() {
+      let newProduct = document.getElementById("txtproduct").value;
+      product.push (newProduct);
+      Display();
+    }
+    function btnDelete(i) {
+     let conf = confirm ("Are you sure?");
+     if (conf) {
+       product.splice(i,1);
+       Display();
+     }
+    }
+    function btnEdit(i) {
+      let editProduct = prompt("Nhập lại tên");
+      product[i] = editProduct;
+      Display();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick = "lamgido()">click</button>
+
+    <p id="result">Bạn vừa nhập: </p>
+
+    <script>
+        function lamgido() {
+            let rs = prompt('lầm gì');
+            let tc = document.getElementById('result').textContent;
+            document.getElementById('result').innerHTML = tc + rs;
+
+        }
+    </script>
+</body>
+</html>

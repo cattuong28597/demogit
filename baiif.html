@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <table>
+            <tr>
+                <td>Họ và tên : </td>
+                <td><input type="text" id="name"></td>
+                <td><button onclick="nhapten()">Tên</button></td>
+                <td>Họ và tên: <span id="name1"></span></td>
+            </tr>
+            <tr>
+                <td>Điểm toán : </td>
+                <td><input type="text" id="toan"></td>
+                <td><button onclick="nhapdiem()">Điểm</button></td>
+                <td> Điểm toán: <span id="math"></span></td>
+            </tr>
+            <tr>
+                <td>Điểm lý : </td>
+                <td><input type="text" id="ly"></td>
+                <td></td>
+                <td>Điểm lý: <span id="physic"></span></td>
+            </tr>
+            <tr>
+                <td>Điểm Anh : </td>
+                <td><input type="text" id="anh"></td>
+                <td></td>
+                <td>Điểm anh: <span id="english"></span></td>
+            </tr>
+            <tr>
+                <td>Điểm Âm nhạc : </td>
+                <td><input type="text" id="nhac"></td>
+                <td></td>
+                <td>Điểm âm nhạc: <span id="music"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                    <td><button onclick="tb()">TB</button></td>
+                    <td></td>
+                    <td></td>
+                    <td>Xếp loại: <span id="ranger"></span></td>
+            </tr>
+        </table>
+   
+    
+
+<script>
+    function nhapten() {
+        let ten = document.getElementById('name').value;
+       document.getElementById('name1').innerHTML = ten;
+    }
+    function nhapdiem() {
+        let toan = parseInt(document.getElementById('toan').value);
+        let ly = parseInt(document.getElementById('ly').value);
+        let anh = parseInt(document.getElementById('anh').value);
+        let nhac = parseInt(document.getElementById('nhac').value);
+        document.getElementById('math').innerHTML = toan;
+        document.getElementById('physic').innerHTML = ly;
+        document.getElementById('english').innerHTML = anh;
+        document.getElementById('music').innerHTML= nhac;
+    }
+    function tb(){
+        let toan = parseInt(document.getElementById('toan').value);
+        let ly = parseInt(document.getElementById('ly').value);
+        let anh = parseInt(document.getElementById('anh').value);
+        let nhac = parseInt(document.getElementById('nhac').value);
+        let result = (toan + ly + anh + nhac) / 4;
+        if (result < 5) {
+            document.getElementById('ranger').innerHTML = 'Yếu';
+        } else {
+            if (result < 6.5) {
+                document.getElementById('ranger').innerHTML = 'TRUNG BÌNH';
+            } else {
+                if (result < 8) {
+                    document.getElementById('ranger').innerHTML = 'KHÁ';
+                } else {
+                    document.getElementById('ranger').innerHTML = 'GIỎI';
+                }
+            }
+        }
+    }
+     
+</script>
+</body>
+</html>
